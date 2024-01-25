@@ -1,0 +1,58 @@
+<hr />
+<p>Add a new people :</p>
+<label> Student </label>
+<input
+  type="checkbox"
+  [ngModel]="peopleToAdd().isStudent"
+  (ngModelChange)="updatePeople('isStudent',$event)"
+/><br />
+<label> Name </label>
+<input
+  type="text"
+  [ngModel]="peopleToAdd().name"
+  (ngModelChange)="updatePeople('name',$event)"
+/><br />
+<label> Forname </label>
+<input
+  type="text"
+  [ngModel]="peopleToAdd().forename"
+  (ngModelChange)="updatePeople('forename',$event)"
+/><br />
+<label> Size </label>
+<input
+  type="number"
+  [ngModel]="peopleToAdd().size"
+  (ngModelChange)="updatePeople('size',$event)"
+/><br />
+<input
+  type="button"
+  value="Append People"
+  (click)="appendPeople(peopleToAdd())"
+/>
+
+<hr />
+<pre>
+People to be added :
+  {{peopleToAdd() | json}}
+</pre>
+
+<hr />
+<table>
+  <thead>
+    <th>isStudent</th>
+    <th>Name</th>
+    <th>Forename</th>
+    <th>Size</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let people of data()">
+      <td>{{people.isStudent}}</td>
+      <td>{{people.name}}</td>
+      <td>{{people.forename}}</td>
+      <td>{{people.size}}</td>
+      <td>
+        <button type="button" (click)="removePeople(people)">remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
